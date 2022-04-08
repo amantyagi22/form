@@ -8,11 +8,24 @@
   /* border: 10px solid black; */
   width: 100%;
   /* height: 100vh; */
-  
   display: flex;
-  
+}
 
-
+label {
+  display: inline-block;
+  margin-left: 24px;
+  font-size: 20px;
+  color: rgb(5, 1, 1);
+  cursor: pointer;
+}
+input{
+  margin-left: 4px;
+}
+/* #Hostelers{
+  margin-left: 5px;
+}  */
+#day-scholars{
+  margin-left: 130px;
 }
 .image1{
 width:100%;
@@ -37,8 +50,8 @@ background-size: 100% 100%;
 
 .text{
   align-items: center;
-  margin-left: 6.2rem;
-  margin-top: 1.5rem;
+  margin-left: 9.2rem;
+  margin-top:2.2rem;
 }
 .form{
   display: block;
@@ -46,6 +59,7 @@ background-size: 100% 100%;
   margin-right: auto;
   align-items: center;
   width: 24rem;
+  margin-top: 10px;
   /* margin-left: 11rem; */
   /* margin-right: 0rem; */
 }
@@ -53,20 +67,26 @@ background-size: 100% 100%;
   border: 2px solid rgb(121, 115, 115);
   border-radius: 10px;
   /* overflow: scroll; */
+  margin: 23px;
 }
 
 .btn{
   position: relative;
-  left: 10.71%;
+  left: 18.71%;
   right: 7.27%;
-  top: 78.21%;
-  bottom: -8.86%;
+  /* top: 78.21%; */
+  /* bottom: -8.86%; */
   width: 18rem;
-  margin-top: 13rem;
+  margin-top: 4rem;
   background: rgba(57, 73, 171, 0.95);
   border-radius: 50px;
   box-shadow: 3px 3px rgb(186, 180, 180);
 }
+.g-recaptcha{
+  margin-top: 1.5rem;
+  margin-left: 4rem;
+}
+
 
 @media only screen and (max-width:360px)
 {
@@ -77,3 +97,7 @@ background-size: 100% 100%;
     flex-direction: column;
   }
 }
+
+/* input[type="radio"]:checked+span {
+  font-weight: bold;
+} */
