@@ -1,10 +1,11 @@
-import axios from "axios";
-import React, {useEffect, useState } from "react";
-// import {useNavigate} from "react-router-dom";
-import validation from './validation';
+import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
+import validation from "./validation";
+import Axios from "axios";
 function Reg() {
-    const navigate = useNavigate();
-  const[submitform,setSubmitform] = useState(false);
+  const resi=["Hosteler","Day-Scholar"]
+  const navigate = useNavigate();
+  
   const [values, setValues] = useState({
     Name: "",
     Rollno: "",
@@ -13,37 +14,56 @@ function Reg() {
     Gender: "",
     Year: "",
     Branch: "",
+    Residence: "",
   });
-  const [errors,setErrors]=useState({});
+  const [errors, setErrors] = useState({});
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
     });
-    
   };
-  useEffect(()=>{
-    if(Object.keys(errors).length === 0){
-        setSubmitform(true);
+  useEffect(() => {
+    if (Object.keys(errors).length === 0) {
+      
     }
-},[errors]);
+  }, [errors]);
   const url = "https://workshopregistration.herokuapp.com/api/users/register";
-  const handleFormSubmit = (event) => {
+  async function handleFormSubmit (event)
+   {
     console.log(values);
     event.preventDefault();
     setErrors(validation(values));
-    axios.post(url, {
-      Name: values.Name,
-      Rollno: values.Rollno,
-      Email: values.Email,
-      Contactno: values.Contactno,
-      Gender: values.Gender,
-      Year: values.Year,
-      Branch: values.Branch,
-    }).then((res) => {
-      console.log(res.data);
-    });
-    axios.post(
+    const result = await fetch (url,{
+            method:'Post',
+            headers:{
+                "Content-Type":'application/json',
+                "Accept":'application/json'
+            },
+
+            body:JSON.stringify({
+              Name: values.Name,
+              Rollno: values.Rollno,
+              Email: values.Email,
+              Contactno: values.Contactno,
+              Gender: values.Gender,
+              Year: values.Year,
+              Branch: values.Branch,
+              Residence: values.Residence,
+            })
+          });
+    
+    
+            const data=result.json();
+    if(result.status===400 || !data )
+    {
+      window.alert("Already Registered User")
+      console.log("Registered user");
+    }
+    else
+    {
+
+     Axios.post(
       "https://workshopregistration.herokuapp.com/api/users/confirmemail",
       {
         Email: values.Email,
@@ -51,6 +71,8 @@ function Reg() {
     ).then((res) => {
       console.log(res.data);
     });
+    navigate("/");
+  }
   };
   return (
     <>
@@ -68,7 +90,6 @@ function Reg() {
                 name="Name"
                 value={values.Name}
                 onChange={handleChange}
-                required
               />
               {errors.Name && <p className="error">{errors.Name}</p>}
             </div>
@@ -156,41 +177,27 @@ function Reg() {
               </select>
             </div>
             <div className="form-group">
-              {(result) => (
-                <>
-                  <label htmlFor="Hostelers">
-                    <span>Hostelers</span>
-                  </label>
-                  <input
-                    type="radio"
-                    id="Hostelers"
-                    name="valid"
-                    value="Hostelers"
-                  />
-                  <label htmlFor="Day-scholars" id="day-scholars">
-                    <span>Day-scholars</span>
-                  </label>
-                  <input
-                    type="radio"
-                    id="Day-scholars"
-                    name="valid"
-                    value="Day-scholars"
-                  />
-                  <b>{result}</b>
-                </>
-              )}
+            <div className="radio">
+                      {resi.map(result=>(
+                          <>
+                              <input type="radio" value={result} name="Residence" onChange={handleChange}/>
+                              <b>{result}</b>
+                              </>
+                      ))}
+                  </div>
             </div>
             <div
-              class="form-group g-recaptcha"
+              className="form-group g-recaptcha"
               data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
             >
               {/* <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha"/> */}
             </div>
             <button
               type="button"
-              class="btn btn-primary btn-lg"
-              onClick={submitform ? handleFormSubmit: handleFormSubmit}
-            //   onClick={submitform ? navigate("/"): handleFormSubmit}
+              className="btn btn-primary btn-lg"
+              onClick={ handleFormSubmit}
+                //  onClick={submitform ? navigate("/"): handleFormSubmit}
+                // jai mata di
             >
               Register
             </button>
