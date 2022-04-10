@@ -57,12 +57,12 @@ function Reg() {
       <div className="cont">
         <div className="image1"></div>
         <div className="image2">
-          <h2 className="text">Hey! Get Yourself Registered</h2>
+          <h2 className="text-center my-4">Hey! Get Yourself Registered</h2>
           <form className="form mt-4">
             <div className="form-group">
               <input
                 type="text"
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlInput1"
                 placeholder="Name"
                 name="Name"
@@ -74,7 +74,7 @@ function Reg() {
             <div className="form-group">
               <input
                 type="number"
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlInput1"
                 placeholder="University Roll No."
                 name="Rollno"
@@ -86,7 +86,7 @@ function Reg() {
             <div className="form-group">
               <input
                 type="number"
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlInput1"
                 placeholder="Contact No."
                 name="Contactno"
@@ -98,7 +98,7 @@ function Reg() {
             <div className="form-group">
               <input
                 type="email"
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlInput1"
                 placeholder="Email Address"
                 name="Email"
@@ -111,7 +111,7 @@ function Reg() {
               <select
                 name="Branch"
                 value={values.Branch}
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlSelect1"
                 onChange={handleChange}
               >
@@ -132,7 +132,7 @@ function Reg() {
               <select
                 name="Year"
                 value={values.Year}
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlSelect1"
                 onChange={handleChange}
               >
@@ -146,7 +146,7 @@ function Reg() {
                 name="Gender"
                 value={values.Gender}
                 onChange={handleChange}
-                className="form-control"
+                className="form-control back-gr"
                 id="exampleFormControlSelect2"
               >
                 <option selected="disabled">Gender</option>

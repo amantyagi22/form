@@ -47,7 +47,13 @@ background-size: contain;
 background-size: 100% 100%;
 
 }
-
+.chead{
+  position: absolute;
+left: 13.05%;
+right: 16.58%;
+top: 10.65%;
+bottom: 85.52%;
+}
 .text{
   align-items: center;
   margin-left: 9.2rem;
@@ -68,6 +74,13 @@ background-size: 100% 100%;
   border-radius: 10px;
   /* overflow: scroll; */
   margin: 23px;
+}
+.back-gr{
+  background: #FFFCFC;
+  border: 1px solid #777777;
+  box-sizing: border-box;
+  border-radius: 10px;
+  
 }
 
 .btn{
