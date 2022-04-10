@@ -3,7 +3,7 @@ import React, {useEffect, useState } from "react";
 // import {useNavigate} from "react-router-dom";
 import validation from './validation';
 function Reg() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
   const[submitform,setSubmitform] = useState(false);
   const [values, setValues] = useState({
     Name: "",
