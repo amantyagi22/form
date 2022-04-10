@@ -114,3 +114,12 @@ bottom: 85.52%;
 /* input[type="radio"]:checked+span {
   font-weight: bold;
 } */
+
+
+.hed{
+  
+  text-align: center;
+  font-size: 32px;
+line-height: 36px;
+border: 2px solid red;
+}
