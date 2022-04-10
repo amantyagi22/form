@@ -1,5 +1,3 @@
-
-
 const Validation = (values) => {
     let errors={};
     if(!values.Name){

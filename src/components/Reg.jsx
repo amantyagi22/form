@@ -1,7 +1,7 @@
+import axios from "axios";
 import React, {useEffect, useState } from "react";
 // import {useNavigate} from "react-router-dom";
 import validation from './validation';
-import Axios from "axios";
 function Reg() {
     // const navigate = useNavigate();
   const[submitform,setSubmitform] = useState(false);
@@ -32,7 +32,7 @@ function Reg() {
     console.log(values);
     event.preventDefault();
     setErrors(validation(values));
-    Axios.post(url, {
+    axios.post(url, {
       Name: values.Name,
       Rollno: values.Rollno,
       Email: values.Email,
@@ -43,7 +43,7 @@ function Reg() {
     }).then((res) => {
       console.log(res.data);
     });
-    Axios.post(
+    axios.post(
       "https://workshopregistration.herokuapp.com/api/users/confirmemail",
       {
         Email: values.Email,
@@ -68,6 +68,7 @@ function Reg() {
                 name="Name"
                 value={values.Name}
                 onChange={handleChange}
+                required
               />
               {errors.Name && <p className="error">{errors.Name}</p>}
             </div>
