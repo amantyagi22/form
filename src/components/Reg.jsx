@@ -8,7 +8,7 @@ function Reg() {
       <div className="form_container">
         <div className="image_left"></div>
         <div className="image_right">
-          <h2 className="left_heading my-4">Hey! Get Yourself Registered</h2>
+          <h2 className="left_heading pb-4">Hey! Get Yourself Registered</h2>
           <form className="input">
         <div className="input_container">
           <input type="text"  className="input_field" placeholder="Name"/>
@@ -47,24 +47,31 @@ function Reg() {
               <option value="3">prefer not to say</option>
         </select>
           </div>
-          <div className="d-flex justify">
-            
-              <div className="form-check radio">
-                hosteler
-                <input type="radio" className="form-check-input bg-dark " name="gender" required
-                  value="male"
+          <div className="input_container">
+           <div className="input_field">
+             <div className="justify">
+              <div className= "radio">
+              Hosteler
+              <div>
+                <input type="radio" className="form-check-input bg-blue " name="gender" required
+                  value="Hosteler "
                    />
+                   </div>
               </div>
-
-              <div className="form-check  radio">
+              <div className="radio">
               Day-Scholar
-                <input type="radio" className="form-check-input bg-dark " name="gender" required
-                  value="female"
+              <div>
+                <input type="radio" className="form-check-input bg-blue " name="gender" required
+                  value="Day-Scholar "
                    />
-
+                   </div>
               </div>
-            </div>
-
+              </div>
+              </div>
+              </div>
+              <div className="input_container">
+              <button type="button" class="btn input_field">Register</button>
+              </div>
 </form>
           
           </div>
