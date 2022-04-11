@@ -7,29 +7,36 @@
 
 .form_container{
   background-color: aqua;
-  width: 100%;
+  width: 100vw;
   display: flex;
 }
 
 
 
 .image_left{
-border: 2px solid red;
-width:100%;
+  background-color: black;
+object-fit: fill;
+/* border: 2px solid red; */
+outline: 2px solid blue;
+width:80vw;
+height: 100vh;
+/* overflow:none; */
 background-repeat: no-repeat;
 background-image: url(./bg1.svg);
-/* background-size: 100% 100%; */
-background-size:100vh;
-/* background-position:10%; */
+background-size:100%;
+background-position:center;
+/* flex: 6; */
 
 }
 .image_right{
-  position: relative;
-  width: 100%;
+  width: 80vw;
   height:100vh;
+  overflow: hidden;
   background-image: url(./bg3.svg);
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size:100%;
+background-position: center center;
+/* flex: 6; */
 display: flex;
 flex-direction: column;
 justify-content: center;
