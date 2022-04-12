@@ -31,12 +31,12 @@ background-position:center;
 .image_right{
   /* border: 6px solid black; */
   width: 90vw;
-  /* height:100vh; */
-  /* overflow: hidden; */
+  height:100vh;
+  overflow: hidden;
   background-image: url(./bg3.svg);
 background-repeat: no-repeat;
-/* background-size:100%; */
-/* background-position:  center; */
+background-size:100%;
+background-position:  center;
 
 /* flex: 6; */
 display: flex;
@@ -45,7 +45,7 @@ justify-content: center;
 
 }
 .heading{
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   justify-content: center;
   padding: 2%;
@@ -56,9 +56,7 @@ justify-content: center;
   font-size: 32px;
   line-height: 36px;
 }
-.form_wrapper{
-  /* border: 2px solid black; */
-}
+
 .input{
   
   /* border: 1px solid violet; */
@@ -105,6 +103,9 @@ letter-spacing: -0.03em;
   /* border: 2px red solid; */
 
 }
+/* .year{
+  border:2px solid red;
+} */
 
 .btn{
   background: rgba(57, 73, 171, 0.95);
