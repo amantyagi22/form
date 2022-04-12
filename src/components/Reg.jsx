@@ -8,7 +8,9 @@ function Reg() {
       <div className="form_container">
         <div className="image_left"></div>
         <div className="image_right">
-          <h2 className="left_heading pb-4">Hey! Get Yourself Registered</h2>
+          <div className="heading">
+          <span className="left_heading">Hey!</span>
+          <span className="left_heading"> Get Yourself Registered</span></div>
           <form className="input">
         <div className="input_container">
           <input type="text"  className="input_field" placeholder="Name"/>
@@ -47,26 +49,24 @@ function Reg() {
               <option value="3">prefer not to say</option>
         </select>
           </div>
-          <div className="input_container">
-           <div className="input_field">
+          <div className="d-flex justify-content-center">
              <div className="justify">
               <div className= "radio">
-              Hosteler
-              <div>
+              <span className="radio_text">Hosteler</span> 
                 <input type="radio" className="form-check-input bg-blue " name="gender" required
                   value="Hosteler "
                    />
-                   </div>
+              {/* <span style = {{opacity}}className="radio_text">Hosteler</span> 
+                <input type="radio" onChange={() => setOpacity(1)} className="form-check-input bg-blue " name="gender" required
+                  value="Hosteler "
+                   /> */}
               </div>
               <div className="radio">
-              Day-Scholar
-              <div>
+              <span className="radio_text">Day-Scholar</span> 
                 <input type="radio" className="form-check-input bg-blue " name="gender" required
                   value="Day-Scholar "
                    />
                    </div>
-              </div>
-              </div>
               </div>
               </div>
               <div className="input_container">
