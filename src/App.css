@@ -125,7 +125,7 @@ align-items: center;
 @media only screen and (max-width:1120px)
 {
   .image1{
-  background-image: url(./bg3.png);
+  background-image: url(./bg2.png);
   }
  .cont{
     flex-direction: column;
