@@ -11,104 +11,6 @@
   display: flex;
 }
 
-<<<<<<< HEAD
-/* input{
-  margin-left:0%;
-
-} */
-
-/* label {
-  display: inline-block;
-  margin-left: 24px;
-  font-size: 20px;
-  color: rgb(12, 9, 9);
-  cursor: pointer;
-} */
-/* #Hostelers{
-  margin-left: 5px;
-}  */
-/* #day-scholars{
-  margin-left: 130px;
-} */
-
-.image1{
-width:100%;
-height:100vh;
-background-repeat: no-repeat;
-background-image: url(./bg1.png);
-/* border: 5px solid red; */
-background-size: 100% 100%;
-overflow-y: hidden;
-}
-
-.image2{
-  width: 100%;
-  height:100vh;
-  /* border: 5px solid green; */
-background-image: url(./bg2.png);
-background-repeat: no-repeat;
-background-size: contain;
-overflow-y: hidden;
-background-size: 100% 100%;
-
-}
-
-.text{
-  margin-top: 1.5rem;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-.form{
-  
-  display: block;
-  justify-content: center;
-  align-items: center;
-  /* border: 10px solid black; */
-  /* width: 30rem; */
-  margin-left: 20%;
-  margin-right: 20%;
-  height:81%;
-}
-
-.form .form-group{
-width:85%;
-margin-top: 5%;
-margin-left: 8%;
-/* margin-right: 10%; */
-/* border: 10px solid black; */
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.form-control{
-  border: 2px solid rgb(121, 115, 115);
-  border-radius: 10px;
-}
-
-.btn{
-  /* position: flex;
-  justify-content: center;
-  align-items: center; */
-  width: 18rem;
-  /* margin-bottom:10%;  */
-  background: rgba(57, 73, 171, 0.95);
-  border-radius: 50px;
-  box-shadow: 3px 3px rgb(186, 180, 180);
-}
-.register{
-  /* position: fixed; */
-  display: flex;
-  /* margin-top: 35%; */
-  margin-bottom: 20%;
-  justify-content: center;
-
-}
-.g-recaptcha{
-  margin-top: 1.5rem;
-  margin-left: 4rem;
-=======
 
 
 .image_left{
@@ -129,12 +31,12 @@ background-position:center;
 .image_right{
   /* border: 6px solid black; */
   width: 90vw;
-  /* height:100vh; */
-  /* overflow: hidden; */
+  height:100vh;
+  overflow: hidden;
   background-image: url(./bg3.svg);
 background-repeat: no-repeat;
-/* background-size:100%; */
-/* background-position:  center; */
+background-size:100%;
+background-position:  center;
 
 /* flex: 6; */
 display: flex;
@@ -143,7 +45,7 @@ justify-content: center;
 
 }
 .heading{
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   justify-content: center;
   padding: 2%;
@@ -154,23 +56,24 @@ justify-content: center;
   font-size: 32px;
   line-height: 36px;
 }
-.form_wrapper{
-  /* border: 2px solid black; */
-}
+
 .input{
   
   /* border: 1px solid violet; */
   display: flex; 
+  
   flex-direction: column;
+   justify-content: center; 
+  /* align-items: center; */
 
 }
 .input_container{
   /* border: 1px solid green; */
 text-align: center;
 display:flex;
+flex-direction: column;
 justify-content: center;
-
-
+align-items: center;
 }
 .input_field{
   margin: 2%;
@@ -203,6 +106,9 @@ letter-spacing: -0.03em;
   /* border: 2px red solid; */
 
 }
+/* .year{
+  border:2px solid red;
+} */
 
 .btn{
   background: rgba(57, 73, 171, 0.95);
@@ -214,63 +120,30 @@ text-align: center;
 letter-spacing: -0.055em;
 
 color: #FFFCFC;
->>>>>>> 6ede2f183f6b3151dd4f51c3386fa4887c816b48
 }
-.radio{
-  /* margin-left: 5.5rem; */
-  width: 100vw;
-  font-size: 1.5rem;
-  /* border: 10px solid red; */
+.email1{
+  color: red;
 }
+input:invalid[focused='true'] ~ p{
+  display: block;
+}
+
+
+
+
+
+
+
 
 @media (max-width:390px) {
 
-<<<<<<< HEAD
-
-.radio .dot{
-  margin-left: 5%;
-  /* margin-right: 10%; */
-}
-
-@media only screen and (max-width:1120px)
-{
-  .image1{
-  background-image: url(./bg3.png);
-=======
   .form_container{
 display: flex;
     flex-direction:column;
->>>>>>> 6ede2f183f6b3151dd4f51c3386fa4887c816b48
   }
   .input_field{
     width: 75%;
   }
-<<<<<<< HEAD
-  .radio .dot{
-    margin-left: 10%;
-  }
-}
-@media only screen and (max-width:634px){
-  .radio{
-    font-size: 1.3rem;
-  }
-}
-@media only screen and (max-width:559px){
-  .radio{
-    font-size: 1.1rem;
-  }
-}
-
-/* input[type="radio"]:checked+span {
-  font-weight: bold;
-} */
-
-.error{
-  color: red;
-  margin-left: 1%;
-  align-items: baseline;
-
-=======
   .radio_text{
     padding-right: 5px;
   }
@@ -280,5 +153,4 @@ display: flex;
     line-height: 28px;
     text-align: center;
   }
->>>>>>> 6ede2f183f6b3151dd4f51c3386fa4887c816b48
 }
