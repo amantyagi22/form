@@ -54,6 +54,7 @@ function Reg() {
     });
 
     const data = result.json();
+    console.log(data);
     if (result.status === 400 || !data) {
       window.alert("enter correct credentials");
       // console.log("Registered user");
