@@ -10,7 +10,7 @@ function Reg() {
     Branch:"",
     Year:"",
     Gender:"",
-    resi:""
+    Residence:""
   });
 
   var checkStatus=false;
@@ -24,7 +24,13 @@ const [isSubmit, setIsSubmit] = useState(false);
 const [focused, setFocused] = useState(false);
 
 
-  let name, value;
+  useEffect(() => {
+    console.log(formErrors);
+    if(Object.keys(formErrors).length=== 0 && isSubmit)
+    {
+      console.log(formdata);
+    }
+    }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
 
   const handleFocus =(e)=>{ 
     setFocused(true);
@@ -57,7 +63,7 @@ const [focused, setFocused] = useState(false);
   //   setformErrorsBranch(validateBranch(formdata));
   
   // };
-
+  let name, value;
   const handleform = (e) =>
 {
   name = e.target.name;
@@ -73,32 +79,31 @@ const submit = async (e) =>
  setformErrorsContactno(validateContactno(formdata));
  setformErrorsRoll(validateRoll(formdata));
 setIsSubmit(true);   
- const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi} = formdata;
- const response = await fetch("https://workshopregistration.herokuapp.com/api/users/register",{
-   method: "POST",
-   body:JSON.stringify({
-    Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi
-   })
- });
- const resdata = await response.json();
- console.log(resdata);
- const email_res = await fetch("https://workshopregistration.herokuapp.com/api/users/confirmemail",{
-   method:"POST",
-   body:JSON.stringify({
-   Email
-   })
- });
- const email_n = await email_res.json();
- console.log(email_n);
+api();
+}
+const api = async () =>
+{
+  // const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, Residence} = formdata;
+  const response = await axios({
+    url:"https://nameless-citadel-14148.herokuapp.com/api/users/register",
+    method:'post',
+    data:({
+     Name:formdata.Name ,  Rollno:formdata.Rollno, Contactno:formdata.Contactno, Email:formdata.Email, Branch:formdata.Branch, Year:formdata.Year, Gender:formdata.Gender, Residence:formdata. Residence
+    })
+  });
+  const resdata = await response.json();
+  console.log(resdata);
+  const email_res = await axios({url:"https://nameless-citadel-14148.herokuapp.com/api/users/confirmemail",
+    method:"post",
+    data:({
+    Email:formdata.Email,
+    })
+  });
+  const email_n = await email_res.json();
+  console.log(email_n);
 }
 
-useEffect(() => {
-  console.log(formErrors);
-  if(Object.keys(formErrors).length=== 0 && isSubmit)
-  {
-    console.log(formdata);
-  }
-  }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
+
 
 
  
@@ -128,7 +133,7 @@ useEffect(() => {
 
     const validateName =(value)=>{
 const errors ={};
-let regex = new RegExp('/^[A-Za-z]+$/'); 
+let regex = new RegExp("^[A-Za-z ]{7,29}$"); 
       if(!value.Name)
       {
         errors.Name="Name is required!";
@@ -146,7 +151,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
     };
     const validateRoll =(value)=>{
       const errors ={};
-      let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+      let regex = new RegExp('[0-9]'); 
             if(!value.Rollno)
             {
               errors.Rollno="Roll number is required!";
@@ -169,7 +174,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
 
           const validateContactno =(value)=>{
             const errors ={};
-            let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+            let regex = new RegExp('^[0-9]{10}$'); 
                   if(!value.Contactno)
                   {
                     errors.Contactno="Contact  number is required!";
@@ -177,7 +182,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
                   }
                   else if(!regex.test(value.Contactno))
                   {
-                    errors.Contactno="Contact  number should only be numeric";
+                    errors.Contactno="Contact  number should only 10 digit";
                     
                   }
                  else{
@@ -227,7 +232,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
           onChange ={handleform} onBlur={handleFocus} focused={focused.toString()}/>   <p className='error_msg'>{formErrors.Email}</p>
         </div>
         <div className="input_container">
-        <select className=" input_field" id="Branch" name="Branch" required value={formdata.Branch}
+        <select className=" input_field select" id="Branch" name="Branch" required value={formdata.Branch}
           onChange ={handleform} focused={focused.toString()} placeholder="Branch">
             <option selected>Branch</option>
             <option >CSE</option>
@@ -243,7 +248,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
         </select>
         </div>
         <div className="input_container">
-        <select className="input_field" name="Gender" value={formdata.Gender}
+        <select className="input_field select" name="Gender" value={formdata.Gender}
           onChange ={handleform}  onBlur={handleFocusName} focused={focused.toString()}>
               <option selected>gender</option>
               <option value="Male">Male</option>
@@ -252,7 +257,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
         </select>
           </div>
         <div className="input_container">
-        <select className="input_field " name="Year" value={formdata.Year}
+        <select className="input_field select" name="Year" value={formdata.Year}
           onChange ={handleform} onBlur={handleFocusName} focused={focused.toString()}>
               <option selected>Year</option>
               <option value="1">1</option>
@@ -260,17 +265,17 @@ let regex = new RegExp('/^[A-Za-z]+$/');
         </select>
           </div>
           <div className="d-flex justify-content-center">
-             <div className="justify">
+             <div className="justify select">
               <div className= "radio">
               <span className="radio_text">Hosteler</span> 
-                <input type="radio" className="form-check-input bg-blue " name="resi" required
+                <input type="radio" className="form-check-input bg-blue " name="Residence" required
                   value="Hosteler"
                   onChange ={handleform}/>
           
               </div>
               <div className="radio">
               <span className="radio_text">Day-Scholar</span> 
-                <input type="radio" className="form-check-input bg-blue " name="resi" required
+                <input type="radio" className="form-check-input bg-blue " name="Residence" required
                   value="Day-Scholar"
                   onChange ={handleform}
                    />
