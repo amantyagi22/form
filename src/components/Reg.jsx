@@ -76,6 +76,10 @@ setIsSubmit(true);
  const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi} = formdata;
  const response = await fetch("https://workshopregistration.herokuapp.com/api/users/register",{
    method: "POST",
+   headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
    body:JSON.stringify({
     Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi
    })
@@ -84,6 +88,10 @@ setIsSubmit(true);
  console.log(resdata);
  const email_res = await fetch("https://workshopregistration.herokuapp.com/api/users/confirmemail",{
    method:"POST",
+   headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
    body:JSON.stringify({
    Email
    })

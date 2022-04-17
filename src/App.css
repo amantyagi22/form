@@ -6,39 +6,28 @@
 
 
 .form_container{
-  /* background-color: aqua; */
-  width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 
 
 .image_left{
-  /* background-color: black; */
-/* object-fit: fill; */
-/* border: 2px solid red; */
-/* outline: 2px solid blue; */
 width:100vw;
 height: 100vh;
-/* overflow:none; */
 background-repeat: no-repeat;
 background-image: url(./bg1.svg);
-background-size:100%;
-background-position:center;
-/* flex: 6; */
+background-size:100% 100%;
+
 
 }
 .image_right{
-  /* border: 6px solid black; */
-  width: 90vw;
+  /* border: 4px solid rgb(244, 13, 198); */
+  width: 100vw;
   height:100vh;
-  overflow: hidden;
   background-image: url(./bg3.svg);
 background-repeat: no-repeat;
-background-size:100%;
-background-position:  center;
-
-/* flex: 6; */
+background-size:100% 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -48,20 +37,18 @@ justify-content: center;
   /* border: 2px solid red; */
   display: flex;
   justify-content: center;
-  padding: 2%;
+  margin: 1rem;
 }
 
 .left_heading{
   font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
+  font-size: 2.5rem;
 }
 
 .input{
-  
-  /* border: 1px solid violet; */
+  /* padding: 3%; */
+  /* border: 3px solid rgb(23, 23, 23); */
   display: flex; 
-  
   flex-direction: column;
    justify-content: center; 
   /* align-items: center; */
@@ -69,27 +56,25 @@ justify-content: center;
 }
 .input_container{
   /* border: 1px solid green; */
-text-align: center;
 display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 }
 .input_field{
-  margin: 2%;
-  padding:1% 1% ;
-  width: 45%;
+  margin: 1.9%;
+  padding:0.5% 1% ;
+  width: 55%;
   background: #FFFCFC;
 border: 1px solid #777777;
-border-radius: 8px;
-font-size: 18px;
-line-height: 20px;
+border-radius: 0.5rem;
+font-size: 1.2rem;
 letter-spacing: -0.03em;
 
 }
 .justify{
   /* border: 2px red solid; */
-  width: 45%;
+  width: 55%;
   display: flex;
   justify-content: space-between;
 }
@@ -123,18 +108,24 @@ color: #FFFCFC;
 }
 .email1{
   color: red;
+  display: block;
+  margin: 0 30% 0 0%;
 }
 input:invalid[focused='true'] ~ p{
   display: block;
+
 }
 
 
 
 
+@media (max-width:853px)
+{
+
+}
 
 
-
-
+/* 
 @media (max-width:390px) {
 
   .form_container{
@@ -153,4 +144,4 @@ display: flex;
     line-height: 28px;
     text-align: center;
   }
-}
+} */
