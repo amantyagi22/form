@@ -76,10 +76,6 @@ setIsSubmit(true);
  const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi} = formdata;
  const response = await fetch("https://workshopregistration.herokuapp.com/api/users/register",{
    method: "POST",
-   headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-    },
    body:JSON.stringify({
     Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi
    })
@@ -88,10 +84,6 @@ setIsSubmit(true);
  console.log(resdata);
  const email_res = await fetch("https://workshopregistration.herokuapp.com/api/users/confirmemail",{
    method:"POST",
-   headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-    },
    body:JSON.stringify({
    Email
    })
@@ -106,7 +98,7 @@ useEffect(() => {
   {
     console.log(formdata);
   }
-  }, [formErrors,formdata,isSubmit]);
+  }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
 
 
  
@@ -136,11 +128,17 @@ useEffect(() => {
 
     const validateName =(value)=>{
 const errors ={};
+let regex = new RegExp('/^[A-Za-z]+$/'); 
       if(!value.Name)
       {
         errors.Name="Name is required!";
       
       }
+      else if(!regex.test(value.Name))
+    {
+      errors.Name="Name should only include alphabets";
+      
+    }
      else{
         checkStatusAll=true;
       }
@@ -148,11 +146,18 @@ const errors ={};
     };
     const validateRoll =(value)=>{
       const errors ={};
-            if(!value.Name)
+      let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+            if(!value.Rollno)
             {
               errors.Rollno="Roll number is required!";
             
             }
+            else if(!regex.test(value.Rollno))
+            {
+              errors.Rollno="Roll number should only be numeric";
+              
+            }
+
            else{
               checkStatusAll=true;
             }
@@ -164,10 +169,16 @@ const errors ={};
 
           const validateContactno =(value)=>{
             const errors ={};
+            let regex = new RegExp('/([1-9][0-9]*)|0/'); 
                   if(!value.Contactno)
                   {
                     errors.Contactno="Contact  number is required!";
                   
+                  }
+                  else if(!regex.test(value.Contactno))
+                  {
+                    errors.Contactno="Contact  number should only be numeric";
+                    
                   }
                  else{
                     checkStatusAll=true;
@@ -201,19 +212,19 @@ const errors ={};
           <form className="input">
         <div className="input_container">
           <input type="text"  className="input_field" placeholder="Name" name="Name" value={formdata.Name}
-          onChange ={handleform} onBlur={handleFocusName} focused={focused.toString()}/>   <p className='email1'>{formErrorsName.Name}</p>
+          onChange ={handleform} onBlur={handleFocusName} focused={focused.toString()}/>   <p className='error_msg'>{formErrorsName.Name}</p>
         </div>
         <div className="input_container">
           <input type="text"  className="input_field" placeholder="University Roll No." name="Rollno" value={formdata.Rollno}
-          onChange ={handleform} onBlur={handleFocusRoll}  focused={focused.toString()}/>   <p className='email1'>{formErrorsRoll.Rollno}</p>
+          onChange ={handleform} onBlur={handleFocusRoll}  focused={focused.toString()}/>   <p className='error_msg'>{formErrorsRoll.Rollno}</p>
         </div>
         <div className="input_container">
           <input type="text"  className="input_field" placeholder="Contact No." name="Contactno" value={formdata.Contactno}
-          onChange ={handleform} onBlur={handleFocusContactno} focused={focused.toString()}/>   <p className='email1'>{formErrorsContactno.Contactno}</p>
+          onChange ={handleform} onBlur={handleFocusContactno} focused={focused.toString()}/>   <p className='error_msg'>{formErrorsContactno.Contactno}</p>
         </div>
         <div className="input_container">
-          <input type="email"  className="input_field emailinp" placeholder="Email Address" name="Email" value={formdata.Email}
-          onChange ={handleform} onBlur={handleFocus} focused={focused.toString()}/>   <p className='email1'>{formErrors.Email}</p>
+          <input type="email"  className="input_field emailinp" placeholder="Email: xyz@akgec.ac.in" name="Email" value={formdata.Email}
+          onChange ={handleform} onBlur={handleFocus} focused={focused.toString()}/>   <p className='error_msg'>{formErrors.Email}</p>
         </div>
         <div className="input_container">
         <select className=" input_field" id="Branch" name="Branch" required value={formdata.Branch}

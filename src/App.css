@@ -43,15 +43,15 @@ justify-content: center;
 .left_heading{
   font-weight: 600;
   font-size: 2.5rem;
+   /* border: 1px solid blue; */
+
 }
 
 .input{
-  /* padding: 3%; */
-  /* border: 3px solid rgb(23, 23, 23); */
   display: flex; 
   flex-direction: column;
-   justify-content: center; 
-  /* align-items: center; */
+   /* justify-content: center;  */
+   /* border: 1px solid blue; */
 
 }
 .input_container{
@@ -60,9 +60,10 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+  margin: 1%;
+
 }
 .input_field{
-  margin: 1.9%;
   padding:0.5% 1% ;
   width: 55%;
   background: #FFFCFC;
@@ -106,10 +107,12 @@ letter-spacing: -0.055em;
 
 color: #FFFCFC;
 }
-.email1{
+.error_msg{
+  margin-top: 0;
   color: red;
   display: block;
-  margin: 0 30% 0 0%;
+  text-align: justify;
+  width: 55%;
 }
 input:invalid[focused='true'] ~ p{
   display: block;
@@ -119,13 +122,17 @@ input:invalid[focused='true'] ~ p{
 
 
 
-@media (max-width:853px)
-{
 
+@media (max-width:1083px)
+{
+.heading{
+  /* font-size: 0.5rem; */
+  width:70%;
+}
 }
 
 
-/* 
+
 @media (max-width:390px) {
 
   .form_container{
@@ -144,4 +151,4 @@ display: flex;
     line-height: 28px;
     text-align: center;
   }
-} */
+}
