@@ -98,7 +98,7 @@ useEffect(() => {
   {
     console.log(formdata);
   }
-  }, [formErrors,formdata,isSubmit]);
+  }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
 
 
  
@@ -128,11 +128,17 @@ useEffect(() => {
 
     const validateName =(value)=>{
 const errors ={};
+let regex = new RegExp('/^[A-Za-z]+$/'); 
       if(!value.Name)
       {
         errors.Name="Name is required!";
       
       }
+      else if(!regex.test(value.Name))
+    {
+      errors.Name="Name should only include alphabets";
+      
+    }
      else{
         checkStatusAll=true;
       }
@@ -140,11 +146,18 @@ const errors ={};
     };
     const validateRoll =(value)=>{
       const errors ={};
-            if(!value.Name)
+      let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+            if(!value.Rollno)
             {
               errors.Rollno="Roll number is required!";
             
             }
+            else if(!regex.test(value.Rollno))
+            {
+              errors.Rollno="Roll number should only be numeric";
+              
+            }
+
            else{
               checkStatusAll=true;
             }
@@ -156,10 +169,16 @@ const errors ={};
 
           const validateContactno =(value)=>{
             const errors ={};
+            let regex = new RegExp('/([1-9][0-9]*)|0/'); 
                   if(!value.Contactno)
                   {
                     errors.Contactno="Contact  number is required!";
                   
+                  }
+                  else if(!regex.test(value.Contactno))
+                  {
+                    errors.Contactno="Contact  number should only be numeric";
+                    
                   }
                  else{
                     checkStatusAll=true;
@@ -204,7 +223,7 @@ const errors ={};
           onChange ={handleform} onBlur={handleFocusContactno} focused={focused.toString()}/>   <p className='email1'>{formErrorsContactno.Contactno}</p>
         </div>
         <div className="input_container">
-          <input type="email"  className="input_field emailinp" placeholder="Email Address" name="Email" value={formdata.Email}
+          <input type="email"  className="input_field emailinp" placeholder="Email: xyz@akgec.ac.in" name="Email" value={formdata.Email}
           onChange ={handleform} onBlur={handleFocus} focused={focused.toString()}/>   <p className='email1'>{formErrors.Email}</p>
         </div>
         <div className="input_container">
