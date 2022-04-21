@@ -1,6 +1,8 @@
 import React, {useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import { toHaveFormValues } from "@testing-library/jest-dom/dist/matchers";
+import xtype from 'xtypejs'
 function Reg() {
   const  [formdata, setFormdata] = useState({
     Name:"",
@@ -10,8 +12,8 @@ function Reg() {
     Branch:"",
     Year:"",
     Gender:"",
-    resi:""
-  });
+    Residence:"",
+});
 
   var checkStatus=false;
   var checkStatusAll=false;
@@ -25,6 +27,13 @@ const [focused, setFocused] = useState(false);
 
 
   let name, value;
+  useEffect(() => {
+    console.log(formErrors);
+    if(Object.keys(formErrors).length=== 0 && isSubmit)
+    {
+      console.log(formdata);
+    }
+    }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
 
   const handleFocus =(e)=>{ 
     setFocused(true);
@@ -58,6 +67,9 @@ const [focused, setFocused] = useState(false);
   
   // };
 
+
+console.log(typeof(formdata));
+
   const handleform = (e) =>
 {
   name = e.target.name;
@@ -72,38 +84,53 @@ const submit = async (e) =>
  setFormErrors(validate(formdata));
  setformErrorsContactno(validateContactno(formdata));
  setformErrorsRoll(validateRoll(formdata));
-setIsSubmit(true);   
- const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi} = formdata;
- const response = await fetch("https://workshopregistration.herokuapp.com/api/users/register",{
-   method: "POST",
+setIsSubmit(true); 
+
+
+//  const {  Name ,  Rollno, Contactno, Email, Branch, Year, Gender, Residence} = formdata;
+
+ const response = await fetch("https://nameless-citadel-14148.herokuapp.com/api/users/register",{
+   method: "Post",
+   headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+
    body:JSON.stringify({
-    Name ,  Rollno, Contactno, Email, Branch, Year, Gender, resi
-   })
+    Name :formdata.Name,  
+    Rollno: formdata.Rollno, 
+    Contactno: formdata.Contactno, 
+    Email:formdata.Email, 
+    Branch: formdata.Branch,
+     Year : formdata.Year, 
+     Gender: formdata.Gender, 
+     Residence:formdata.Residence
+   }),
  });
  const resdata = await response.json();
  console.log(resdata);
- const email_res = await fetch("https://workshopregistration.herokuapp.com/api/users/confirmemail",{
-   method:"POST",
-   body:JSON.stringify({
-   Email
-   })
- });
- const email_n = await email_res.json();
- console.log(email_n);
+
+if(response.status === 400 || !resdata)
+{
+window.alert("tddyjugkh");
+}
+else{
+  axios.post("https://nameless-citadel-14148.herokuapp.com/api/users/confirmemail", 
+  
+  {
+    Email: formdata.Email,
+  }
+  
+  )
+  .then((res)=>
+  {
+    console.log(res.data);
+  });
 }
 
-useEffect(() => {
-  console.log(formErrors);
-  if(Object.keys(formErrors).length=== 0 && isSubmit)
-  {
-    console.log(formdata);
-  }
-  }, [formErrors,formErrorsBranch,formErrorsContactno,formErrorsRoll,formdata,isSubmit]);
 
-
- 
- 
-  const validate =(value)=> {
+}
+ const validate =(value)=> {
     const errors ={}
     let regex = new RegExp('[a-z0-9]+@akgec.ac.in'); 
     
@@ -128,7 +155,7 @@ useEffect(() => {
 
     const validateName =(value)=>{
 const errors ={};
-let regex = new RegExp('/^[A-Za-z]+$/'); 
+let regex = new RegExp("^[A-Za-z ]{7,29}$"); 
       if(!value.Name)
       {
         errors.Name="Name is required!";
@@ -146,7 +173,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
     };
     const validateRoll =(value)=>{
       const errors ={};
-      let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+      let regex = new RegExp('[0-9]'); 
             if(!value.Rollno)
             {
               errors.Rollno="Roll number is required!";
@@ -169,7 +196,7 @@ let regex = new RegExp('/^[A-Za-z]+$/');
 
           const validateContactno =(value)=>{
             const errors ={};
-            let regex = new RegExp('/([1-9][0-9]*)|0/'); 
+            let regex = new RegExp('^[0-9]{10}$'); 
                   if(!value.Contactno)
                   {
                     errors.Contactno="Contact  number is required!";
@@ -263,14 +290,14 @@ let regex = new RegExp('/^[A-Za-z]+$/');
              <div className="justify">
               <div className= "radio">
               <span className="radio_text">Hosteler</span> 
-                <input type="radio" className="form-check-input bg-blue " name="resi" required
+                <input type="radio" className="form-check-input bg-blue " name="Residence" required
                   value="Hosteler"
                   onChange ={handleform}/>
           
               </div>
               <div className="radio">
               <span className="radio_text">Day-Scholar</span> 
-                <input type="radio" className="form-check-input bg-blue " name="resi" required
+                <input type="radio" className="form-check-input bg-blue " name="Residence" required
                   value="Day-Scholar"
                   onChange ={handleform}
                    />
@@ -289,3 +316,11 @@ let regex = new RegExp('/^[A-Za-z]+$/');
   );
 }
 export default Reg;
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
